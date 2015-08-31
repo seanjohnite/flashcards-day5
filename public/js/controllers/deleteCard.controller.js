@@ -5,9 +5,9 @@ app.controller('DeleteCardController', function ($scope, FlashCardsFactory, $sta
       $state.go('cards');
     })
     .then(null, console.error.bind(console));
-  }
+  };
 
   $scope.back = function () {
     $state.go('^');
-  }
+  };
 })
