@@ -1,4 +1,4 @@
-app.controller('NewCardController', function ($scope, FlashCardsFactory, $rootScope) {
+app.controller('NewCardController', function ($state, $scope, FlashCardsFactory, $rootScope) {
 	$scope.categories = FlashCardsFactory.categories;
 	function resetCard () {
 		$scope.newCard = {
@@ -16,6 +16,7 @@ app.controller('NewCardController', function ($scope, FlashCardsFactory, $rootSc
 		.then(function (createdCard) {
 			// $rootScope.$broadcast('newCard!', createdCard);
 			resetCard();
+			$state.go('cards');
 		});
 	};
 	resetCard();
