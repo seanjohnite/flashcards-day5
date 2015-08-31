@@ -1,31 +1,31 @@
 app.config(function ($stateProvider) {
   $stateProvider.state('stats', {
     url: '/stats',
-    templateUrl: '/js/states/views/statsPage.html',
+    templateUrl: '/templates/statsPage.html',
     controller: 'StatsController'
   })
   .state('newCard', {
     url: '/newCard',
-    templateUrl: '/js/states/views/newCardForm.html',
+    templateUrl: '/templates/newCardForm.html',
     controller: 'NewCardController'
   })
   .state('cards', {
     url: '/',
-    templateUrl: '/js/states/views/allCards.html',
+    templateUrl: '/templates/allCards.html',
     controller: 'MainController'
   })
   .state('manageCard', {
     url: '/:cardId',
-    templateUrl: '/js/states/views/manageCard.html'
+    templateUrl: '/templates/manageCard.html'
   })
   .state('manageCard.edit', {
     url: '/edit',
-    templateUrl: '/js/states/views/editCard.html',
+    templateUrl: '/templates/editCard.html',
     controller: 'EditCardController'
   })
   .state('manageCard.delete', {
     url: '/delete',
-    templateUrl: '/js/states/views/deleteCard.html',
+    templateUrl: '/templates/deleteCard.html',
     controller: 'DeleteCardController'
   });
 });

@@ -1,7 +1,7 @@
 app.directive('flashCard', function(ScoreFactory){
   return {
     restrict: 'E',
-    templateUrl: '/js/directives/flashcard/flashcard.html',
+    templateUrl: '/templates/flashcard.html',
     scope: {
       card: '='
     },
