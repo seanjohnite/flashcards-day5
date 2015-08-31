@@ -54,6 +54,14 @@ app.get('/cards', function (req, res) {
 
 });
 
+app.get('/cards/:id', function (req, res, next){
+  FlashCardModel.findById(req.params.id).exec()
+  .then(function (card) {
+    res.send(card);
+  })
+  .then(null, next);
+})
+
 app.post('/cards', function (req, res, next) {
     FlashCardModel.create(req.body)
     .then(function (newCard) {
@@ -82,3 +90,12 @@ app.put('/cards/:id', function (req, res, next) {
     .then(null, next);
 });
 
+app.delete('/cards/:id', function (req, res, next) {
+  FlashCardModel.find( { _id: req.params.id })
+  .remove()
+  .exec()
+  .then(function(){
+    res.send('Delete was super effective!')
+  })
+  .then(null,next);
+});

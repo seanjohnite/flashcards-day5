@@ -70,4 +70,57 @@ app.config(function ($stateProvider) {
     controller: mainController
   });
 
+  // function manageController($scope, FlashCardsFactory, $stateParams) {
+  //   FlashCardsFactory.getOneFlashCard($stateParams.cardId)
+  //   .then(function(card){
+  //     $scope.card = card;
+  //   });
+  // }
+
+  $stateProvider.state('manageCard', {
+    url: '/:cardId',
+    templateUrl: '/js/states/manageCard.html'
+    // controller: manageController
+  })
+
+  function editController ($scope, FlashCardsFactory, $state, $stateParams) {
+    FlashCardsFactory.getOneFlashCard($stateParams.cardId)
+    .then(function(card){
+      $scope.card = card;
+    });
+
+  	$scope.saveCard = function () {
+  		FlashCardsFactory.updateCard($scope.card)
+  		.then(function (updatedCard) {
+        $state.go('cards');
+  		})
+      .then(null, console.error.bind(console));
+  	};
+  }
+
+  $stateProvider.state('manageCard.edit', {
+    url: '/edit',
+    templateUrl: '/js/states/editCard.html',
+    controller: editController
+  })
+
+  function deleteController ($scope, FlashCardsFactory, $state, $stateParams) {
+    $scope.deleteCard = function() {
+      FlashCardsFactory.deleteFlashCard($stateParams.cardId)
+      .then(function(){
+        $state.go('cards');
+      })
+      .then(null, console.error.bind(console));
+    }
+
+    $scope.back = function () {
+      $state.go('^');
+    }
+  }
+
+  $stateProvider.state('manageCard.delete', {
+    url: '/delete',
+    templateUrl: '/js/states/deleteCard.html',
+    controller: deleteController
+  })
 });
