@@ -1,0 +1,24 @@
+<div class="flash-card">
+    <h1>Create a new flash card</h1>
+    <form name="cardForm" ng-submit="cardForm.$valid && saveCard()" novalidate>
+        <h3>question</h3>
+        <p ng-show="cardForm.questionField.$error.required">Question is a required field</p>
+        <p ng-show="cardForm.questionField.$error.minlength">Question is too short</p>
+        <p>
+            <input name="questionField" type="text" ng-model="newCard.question" required ng-minlength="15" />
+        </p>
+        <h3>category</h3>
+        <p ng-show="cardForm.categoryField.$dirty && cardForm.categoryField.$error.required">Category is a required field</p>
+        <select name="categoryField" ng-model="newCard.category" required>
+            <option value="" disabled>(select one)</option>
+            <option ng-repeat="category in categories">{{ category }}</option>
+        </select>
+        <h3>answers</h3>
+        <div ng-repeat="answer in newCard.answers">
+            <p ng-show="cardForm.answer{{$index}}.$error.maxlength">Answer is too long</p>
+            <input type="checkbox" ng-model="answer.correct">
+            <input type="text" name="answer{{$index}}" ng-model="answer.text" ng-maxlength="40">
+        </div>
+        <button type="submit">Save</button>
+    </form>
+</div>

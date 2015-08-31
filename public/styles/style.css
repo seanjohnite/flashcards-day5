@@ -82,4 +82,50 @@
       #statistics #scoreboard h3 span {
         font-weight: bold; }
 
+/* navbar styling */
+
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 50px;
+  background-color: #1C1550;
+}
+
+nav > div {
+  width: 60%;
+  margin: auto;
+}
+
+body::before {
+  margin-top: 60px;
+  content: "";
+  display: block;
+}
+
+nav li {
+  display: inline-block;
+  line-height: 50px;
+  margin-right: 5px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #C5B2B5;
+  display: inline-block;
+  line-height: 50px;
+  margin-right: 5px;
+  font-family: Arial, sans-serif;
+}
+
+nav a:hover {
+  text-decoration: none;
+  color: #73686B;
+  display: inline-block;
+  line-height: 50px;
+  margin-right: 5px;
+}
+
+
 /*# sourceMappingURL=style.css.map */
